@@ -30,12 +30,12 @@
 #
 # 5. Multi-Agent Support
 #    - Handles agent-specific file paths and naming conventions
-#    - Supports: Claude, Gemini, Copilot, Cursor, Qwen, opencode, Codex, Windsurf, Kilo Code, Auggie CLI, or Amazon Q Developer CLI
+#    - Supports: Claude, Gemini, Copilot, Cursor, Qwen, opencode, Codex, Windsurf, Trae, Kilo Code, Auggie CLI, or Amazon Q Developer CLI
 #    - Can update single agents or all existing agent files
 #    - Creates default Claude file if no agent files exist
 #
 # Usage: ./update-agent-context.sh [agent_type]
-# Agent types: claude|gemini|copilot|cursor-agent|qwen|opencode|codex|windsurf|kilocode|auggie|q
+# Agent types: claude|gemini|copilot|cursor-agent|qwen|opencode|codex|windsurf|trae|kilocode|auggie|q
 # Leave empty to update all existing agent files
 
 set -e
@@ -66,6 +66,7 @@ CURSOR_FILE="$REPO_ROOT/.cursor/rules/specify-rules.mdc"
 QWEN_FILE="$REPO_ROOT/QWEN.md"
 AGENTS_FILE="$REPO_ROOT/AGENTS.md"
 WINDSURF_FILE="$REPO_ROOT/.windsurf/rules/specify-rules.md"
+TRAE_FILE="$REPO_ROOT/.trae/rules/specify-rules.md"
 KILOCODE_FILE="$REPO_ROOT/.kilocode/rules/specify-rules.md"
 AUGGIE_FILE="$REPO_ROOT/.augment/rules/specify-rules.md"
 ROO_FILE="$REPO_ROOT/.roo/rules/specify-rules.md"
@@ -573,6 +574,9 @@ update_specific_agent() {
         windsurf)
             update_agent_file "$WINDSURF_FILE" "Windsurf"
             ;;
+        trae)
+            update_agent_file "$TRAE_FILE" "Trae"
+            ;;
         kilocode)
             update_agent_file "$KILOCODE_FILE" "Kilo Code"
             ;;
@@ -590,7 +594,7 @@ update_specific_agent() {
             ;;
         *)
             log_error "Unknown agent type '$agent_type'"
-            log_error "Expected: claude|gemini|copilot|cursor-agent|qwen|opencode|codex|windsurf|kilocode|auggie|roo|q"
+            log_error "Expected: claude|gemini|copilot|cursor-agent|qwen|opencode|codex|windsurf|trae|kilocode|auggie|roo|q"
             exit 1
             ;;
     esac
@@ -632,6 +636,11 @@ update_all_existing_agents() {
     
     if [[ -f "$WINDSURF_FILE" ]]; then
         update_agent_file "$WINDSURF_FILE" "Windsurf"
+        found_agent=true
+    fi
+
+    if [[ -f "$TRAE_FILE" ]]; then
+        update_agent_file "$TRAE_FILE" "Trae"
         found_agent=true
     fi
     
@@ -684,7 +693,7 @@ print_summary() {
     
     echo
 
-    log_info "Usage: $0 [claude|gemini|copilot|cursor-agent|qwen|opencode|codex|windsurf|kilocode|auggie|codebuddy|q]"
+    log_info "Usage: $0 [claude|gemini|copilot|cursor-agent|qwen|opencode|codex|windsurf|trae|kilocode|auggie|codebuddy|q]"
 }
 
 #==============================================================================

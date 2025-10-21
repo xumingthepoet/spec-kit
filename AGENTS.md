@@ -39,6 +39,7 @@ Specify supports multiple AI agents by generating agent-specific command files a
 | **opencode** | `.opencode/command/` | Markdown | `opencode` | opencode CLI |
 | **Codex CLI** | `.codex/commands/` | Markdown | `codex` | Codex CLI |
 | **Windsurf** | `.windsurf/workflows/` | Markdown | N/A (IDE-based) | Windsurf IDE workflows |
+| **Trae IDE** | `.trae/commands/`     | Markdown | `trae` | Trae IDE |
 | **Kilo Code** | `.kilocode/rules/` | Markdown | N/A (IDE-based) | Kilo Code IDE |
 | **Auggie CLI** | `.augment/rules/` | Markdown | `auggie` | Auggie CLI |
 | **Roo Code** | `.roo/rules/` | Markdown | N/A (IDE-based) | Roo Code IDE |
@@ -294,6 +295,7 @@ Require a command-line tool to be installed:
 - **Cursor**: `cursor-agent` CLI
 - **Qwen Code**: `qwen` CLI
 - **opencode**: `opencode` CLI
+- **Trae**: `trae` CLI
 - **Amazon Q Developer CLI**: `q` CLI
 - **CodeBuddy CLI**: `codebuddy` CLI
 
